@@ -1,0 +1,971 @@
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta de colores medieval */
+    --color-primary: #8B4513;
+    --color-secondary: #D2691E;
+    --color-accent: #CD853F;
+    --color-dark: #5D4037;
+    --color-darker: #3E2723;
+    --color-light: #F5F5DC;
+    --color-gold: #FFD700;
+    --color-silver: #C0C0C0;
+    --color-bronze: #CD7F32;
+    --color-success: #4CAF50;
+    --color-danger: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, var(--color-dark), var(--color-primary));
+    --gradient-gold: linear-gradient(135deg, var(--color-gold), #FFA500);
+    --gradient-parchment: linear-gradient(135deg, #F5F5DC, #E8DCB8);
+    
+    /* Sombras */
+    --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+    /* Bordes */
+    --border-radius: 12px;
+    --border-radius-small: 8px;
+}
+
+body {
+    font-family: 'MedievalSharp', 'Times New Roman', serif;
+    background: 
+        radial-gradient(circle at 20% 50%, var(--color-darker) 0%, var(--color-dark) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stone" patternUnits="userSpaceOnUse" width="20" height="20"><rect width="20" height="20" fill="%233E2723"/><path d="M0 0L20 20M20 0L0 20" stroke="%235D4037" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23stone)"/></svg>');
+    color: var(--color-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 20px 20px 120px; /* Espacio para el footer fijo */
+}
+
+/* ===== EFECTOS DE FONDO ===== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(205, 133, 63, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===== HEADER ===== */
+.header-premium {
+    background: var(--gradient-primary);
+    padding: 25px 40px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    border: 3px solid var(--color-gold);
+    box-shadow: var(--shadow-heavy);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-gold);
+}
+
+.header-premium h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--color-gold), var(--color-silver), var(--color-bronze));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.header-premium h1::after {
+    content: '⚔️';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.header-premium h1::before {
+    content: '🛡️';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.header-premium p {
+    font-size: 1.3rem;
+    color: var(--color-light);
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+/* ===== FORMULARIO CREACIÓN ===== */
+.formulario-creacion {
+    background: var(--gradient-parchment);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    border: 2px solid var(--color-primary);
+    position: relative;
+}
+
+.formulario-creacion::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+    border-radius: calc(var(--border-radius) + 10px);
+    z-index: -1;
+}
+
+.formulario-creacion h2 {
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.formulario-creacion h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+}
+
+/* ===== ESTILOS DE FORMULARIOS ===== */
+form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--color-accent);
+}
+
+fieldset {
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-small);
+    padding: 20px;
+    background: rgba(245, 245, 220, 0.8);
+}
+
+legend {
+    font-weight: bold;
+    color: var(--color-dark);
+    padding: 0 15px;
+    font-size: 1.3rem;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    margin: 12px 25px 12px 0;
+    font-weight: 600;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(139, 69, 19, 0.1);
+}
+
+label:hover {
+    background: rgba(139, 69, 19, 0.2);
+    transform: translateY(-2px);
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 12px 15px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--border-radius-small);
+    margin-left: 10px;
+    width: 220px;
+    background: var(--color-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+    accent-color: var(--color-primary);
+}
+
+input[type="submit"] {
+    background: var(--gradient-primary);
+    color: var(--color-light);
+    padding: 15px 35px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+}
+
+/* ===== HISTORIAL DE PERSONAJES ===== */
+.historial-personajes {
+    background: var(--gradient-parchment);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    border: 2px solid var(--color-primary);
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.historial-personajes h2 {
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.historial-personajes h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+}
+
+/* ===== ITEMS DEL HISTORIAL ===== */
+.personaje-historial-item {
+    background: linear-gradient(135deg, #FFF8DC, #F5F5DC);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--border-radius-small);
+    padding: 18px;
+    margin: 12px 0;
+    border-left: 6px solid var(--color-primary);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.personaje-historial-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.05), transparent);
+    z-index: 0;
+}
+
+.personaje-historial-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-medium);
+    border-left-color: var(--color-gold);
+}
+
+.personaje-historial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* CORREGIDO: Texto con color oscuro para buen contraste */
+.personaje-historial-header strong {
+    color: var(--color-darker);
+    font-size: 1.2rem;
+}
+
+.personaje-numero {
+    background: var(--gradient-primary);
+    color: var(--color-light);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: var(--shadow-light);
+}
+
+.personaje-especie {
+    color: var(--color-primary);
+    font-style: italic;
+    font-weight: 600;
+    background: rgba(139, 69, 19, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.personaje-experiencia {
+    background: var(--gradient-gold);
+    color: var(--color-darker);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: var(--shadow-light);
+}
+
+/* CORREGIDO: Texto oscuro para buena legibilidad */
+.personaje-estadisticas {
+    color: var(--color-dark);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+    background: rgba(205, 133, 63, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.personaje-fecha {
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    background: rgba(94, 64, 55, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* ===== MENSAJES EN EL HISTORIAL ===== */
+.sin-personajes {
+    text-align: center;
+    color: var(--color-dark);
+    font-style: italic;
+    padding: 30px;
+    background: rgba(245, 245, 220, 0.8);
+    border-radius: var(--border-radius-small);
+    border: 2px dashed var(--color-accent);
+}
+
+/* ===== CONTENEDOR DE HISTORIAL ===== */
+.historial-personajes {
+    background: var(--gradient-parchment);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    border: 2px solid var(--color-primary);
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.historial-personajes h2 {
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.historial-personajes h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+}
+/* ===== BOTONES ===== */
+.botones-historial {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: var(--color-light);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--color-danger), #D32F2F);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #D32F2F, var(--color-danger));
+}
+
+/* ===== FOOTER FIJADO ===== */
+.footer-premium {
+    background: var(--gradient-primary);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    width: 95%;
+    max-width: 1200px;
+    border: 2px solid var(--color-gold);
+    box-shadow: var(--shadow-heavy);
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    color: var(--color-light);
+}
+
+.footer-heart {
+    display: inline-block;
+    animation: heartbeat 1.5s ease-in-out infinite both;
+    font-size: 1.3rem;
+}
+
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+        transform-origin: center center;
+        animation-timing-function: ease-out;
+    }
+    10% {
+        transform: scale(0.91);
+        animation-timing-function: ease-in;
+    }
+    17% {
+        transform: scale(0.98);
+        animation-timing-function: ease-out;
+    }
+    33% {
+        transform: scale(0.87);
+        animation-timing-function: ease-in;
+    }
+    45% {
+        transform: scale(1);
+        animation-timing-function: ease-out;
+    }
+}
+
+.footer-email {
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.footer-email:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: var(--color-light);
+    opacity: 0.8;
+}
+
+/* ===== FORMULARIO 2 - CREACIÓN DE PERSONAJE ===== */
+.contenedor-formulario-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.formulario-personaje {
+    background: var(--gradient-parchment);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    border: 3px solid var(--color-primary);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.formulario-personaje::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+    border-radius: calc(var(--border-radius) + 15px);
+    z-index: -1;
+}
+
+.formulario-personaje::after {
+    content: '⚔️';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    font-size: 3rem;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+}
+
+.titulo-formulario {
+    text-align: center;
+    color: var(--color-dark);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.titulo-formulario::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 4px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+}
+
+.estadisticas-seccion {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-accent);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.estadisticas-seccion legend {
+    font-size: 1.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0 20px;
+}
+
+.grupo-estadisticas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.estadistica-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.estadistica-item label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-dark);
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+.estadistica-item input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--border-radius-small);
+    background: var(--color-light);
+    transition: all 0.3s ease;
+}
+
+.estadistica-item input[type="number"]:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(139, 69, 19, 0.3);
+    transform: translateY(-2px);
+}
+
+.boton-crear {
+    display: block;
+    width: 100%;
+    background: var(--gradient-primary);
+    color: var(--color-light);
+    padding: 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton-crear::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.boton-crear:hover::before {
+    left: 100%;
+}
+
+.boton-crear:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+}
+
+/* Iconos para cada tipo de personaje */
+.guerrero-stats::before {
+    content: '💂‍♂️';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+}
+
+.mago-stats::before {
+    content: '🧙‍♂️';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+}
+
+.explorador-stats::before {
+    content: '🧔‍♂️';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Badge de clase */
+.badge-clase {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--gradient-gold);
+    color: var(--color-darker);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-light);
+}
+
+/* Efectos de entrada */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formulario-personaje {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* ===== MENSAJES Y ESTADOS ===== */
+.mensaje {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-medium);
+}
+
+.mensaje-exito {
+    background: linear-gradient(135deg, var(--color-success), #388E3C);
+    border: 2px solid #4CAF50;
+}
+
+.mensaje-error {
+    background: linear-gradient(135deg, var(--color-danger), #D32F2F);
+    border: 2px solid #F44336;
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+.historial-personajes::-webkit-scrollbar {
+    width: 8px;
+}
+
+.historial-personajes::-webkit-scrollbar-track {
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 4px;
+}
+
+.historial-personajes::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+.historial-personajes::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .header-premium h1 {
+        font-size: 2.8rem;
+    }
+    
+    .historial-personajes {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px 15px 120px;
+    }
+    
+    .header-premium {
+        padding: 20px;
+    }
+    
+    .header-premium h1 {
+        font-size: 2.2rem;
+    }
+    
+    .contenedor-principal {
+        width: 100%;
+    }
+    
+    .formulario-creacion,
+    .historial-personajes {
+        padding: 20px;
+    }
+    
+    .personaje-historial-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .footer-premium {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .formulario-personaje {
+        padding: 25px;
+        width: 95%;
+    }
+    
+    .grupo-estadisticas {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .titulo-formulario {
+        font-size: 2rem;
+    }
+    
+    .boton-crear {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .estadisticas-seccion::before {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        top: -10px;
+        right: -10px;
+    }
+}
+
+/* ===== EFECTOS ESPECIALES ===== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Decoraciones medievales */
+.decoration-shield {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 8rem;
+    z-index: -1;
+}
+
+.decoration-sword {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 6rem;
+    z-index: -1;
+}
+
+/* Efecto de pergamino enrollado */
+.estadisticas-seccion::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    right: 10%;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    border-radius: 50%;
+    opacity: 0.3;
+}
